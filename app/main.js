@@ -30,11 +30,14 @@ function okex(callback) {
   })
   
   ws.on('message', (msg) => {
-    var data = JSON.parse(msg)
-    data = data[0].data
-    if (data.last) {
-      let price = data.last
-      callback(price)
+    try {
+      var data = JSON.parse(msg)
+      data = data[0].data
+      if (data.last) {
+        let price = data.last
+        callback(price)
+      }
+    } catch (e) {
     }
   })
   
