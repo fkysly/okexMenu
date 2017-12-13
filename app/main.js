@@ -42,6 +42,6 @@ function okex(callback) {
   })
   
   ws.on('close', () => {
-    okex()
+    okex(callback)
   })
 }
